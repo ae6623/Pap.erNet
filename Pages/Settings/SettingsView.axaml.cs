@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Avalonia.Controls;
@@ -42,6 +43,23 @@ public partial class SettingsView : UserControl
 			{
 				viewModel.SavePath = path;
 			}
+		}
+	}
+
+	private void OpenFolder_Click(object? sender, RoutedEventArgs e)
+	{
+		if (DataContext is not SettingsViewModel viewModel)
+			return;
+
+		var path = viewModel.SavePath;
+		if (System.IO.Directory.Exists(path))
+		{
+			Process.Start(new ProcessStartInfo
+			{
+				FileName = "explorer.exe",
+				Arguments = $"\"{path}\"",
+				UseShellExecute = true
+			});
 		}
 	}
 }

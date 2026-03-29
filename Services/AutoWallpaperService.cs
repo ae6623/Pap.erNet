@@ -150,8 +150,8 @@ public class AutoWallpaperService
 	{
 		try
 		{
-			// 获取高清图片URL (将 thumb 替换为原始图片)
-			var imageUrl = wallpaper.Url.Replace("thumb", "raw");
+			// 优先使用高清图片URL: raw > full > thumb
+			var imageUrl = wallpaper.RawUrl ?? wallpaper.FullUrl ?? wallpaper.Url;
 
 			// 生成文件名
 			var fileName = $"{DateTime.Now:yyyyMMdd_HHmmss}_{wallpaper.Id}.jpg";
@@ -159,12 +159,12 @@ public class AutoWallpaperService
 
 			// 下载图片
 			using var client = new System.Net.Http.HttpClient();
-			client.Timeout = TimeSpan.FromMinutes(2);
+			client.Timeout = TimeSpan.FromMinutes(5); // 高清图片下载时间更长
 
 			var response = await client.GetAsync(imageUrl, cancellationToken);
 			if (!response.IsSuccessStatusCode)
 			{
-				// 如果 raw 失败，尝试下载 thumb
+				// 如果高清失败，尝试下载缩略图
 				response = await client.GetAsync(wallpaper.Url, cancellationToken);
 				if (!response.IsSuccessStatusCode)
 					return null;

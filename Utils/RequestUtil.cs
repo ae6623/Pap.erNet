@@ -33,6 +33,8 @@ namespace Pap.erNet.Utils
 				      urls {
 				        __typename
 				        thumb
+				        full
+				        raw
 				      }
 				      width
 				      height

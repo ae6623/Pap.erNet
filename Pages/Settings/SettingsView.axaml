@@ -118,13 +118,26 @@
                                          BorderBrush="#44FFFFFF"
                                          Padding="8 6"
                                          Margin="0 0 8 0"/>
-                                <Button Grid.Column="1"
-                                        Content="选择"
+                                <StackPanel Grid.Column="1" 
+                                        Orientation="Horizontal" 
+                                        Spacing="8">
+                                <Button Content="选择"
                                         Click="SelectFolder_Click"
                                         Background="#44FFFFFF"
                                         Foreground="White"
                                         Padding="12 6"
                                         BorderThickness="0"/>
+                                <Button Click="OpenFolder_Click"
+                                        Background="#33FFFFFF"
+                                        Foreground="White"
+                                        Padding="8 6"
+                                        BorderThickness="0"
+                                        ToolTip.Tip="打开文件夹">
+                                    <PathIcon Data="M6,2H14L20,8V20A2,2 0 0,1 18,22H6A2,2 0 0,1 4,20V4A2,2 0 0,1 6,2M13,3.5V9H18.5L13,3.5M6,12V14H15V12H6M6,16V18H15V16H6Z" 
+                                              Width="16" 
+                                              Height="16"/>
+                                </Button>
+                            </StackPanel>
                             </Grid>
                         </Grid>
                     </StackPanel>

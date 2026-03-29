@@ -6,6 +6,8 @@ namespace Pap.erNet.Models;
 public class Wallpaper
 {
 	public string Url { get; set; } = string.Empty;
+	public string? FullUrl { get; set; }
+	public string? RawUrl { get; set; }
 
 	public string Thumbnail { get; set; } = string.Empty;
 	public string ResolutionRatio { get; set; } = string.Empty;
@@ -64,4 +66,6 @@ public class PhotoUrl
 	[JsonPropertyName("__typename")]
 	public required string __Typename { get; set; }
 	public required string Thumb { get; set; }
+	public string? Full { get; set; }
+	public string? Raw { get; set; }
 }

@@ -31,6 +31,8 @@ public class WallpaperListService
 			{
 				Id = entry.Id,
 				Url = entry.Urls.Thumb.Replace("http://", "https://"),
+				FullUrl = entry.Urls.Full?.Replace("http://", "https://"),
+				RawUrl = entry.Urls.Raw?.Replace("http://", "https://"),
 				Link = entry.Link,
 				Author = entry.Heading,
 				Thumbnail = thumbnail,
@@ -85,6 +87,8 @@ public class WallpaperListService
 			{
 				Id = entry.Id,
 				Url = entry.Urls.Thumb.Replace("http://", "https://"),
+				FullUrl = entry.Urls.Full?.Replace("http://", "https://"),
+				RawUrl = entry.Urls.Raw?.Replace("http://", "https://"),
 				Link = entry.Link,
 				Author = entry.Heading,
 				Thumbnail = thumbnail,
@@ -115,6 +119,8 @@ public class WallpaperListService
 			{
 				Id = entry.Id,
 				Url = entry.Urls.Thumb.Replace("http://", "https://"),
+				FullUrl = entry.Urls.Full?.Replace("http://", "https://"),
+				RawUrl = entry.Urls.Raw?.Replace("http://", "https://"),
 				Link = entry.Link,
 				Author = entry.Heading,
 				Thumbnail = thumbnail,
