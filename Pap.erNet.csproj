@@ -1,0 +1,75 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net10.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+		<ApplicationManifest>app.manifest</ApplicationManifest>
+		<AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+		<CSharpier_Check>true</CSharpier_Check>
+		<CSharpier_LogLevel>Information</CSharpier_LogLevel>
+		<CSharpier_FrameworkVersion>net10.0</CSharpier_FrameworkVersion>
+		<ApplicationIcon>logo.ico</ApplicationIcon>
+		<ImplicitUsings>true</ImplicitUsings>
+		<!--不需要特定于全球化的代码和数据，使用固定模式-->
+		<InvariantGlobalization>true</InvariantGlobalization>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+		<DefineConstants>$(DefineConstants);ENABLE_XAML_HOT_RELOAD</DefineConstants>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)' == 'Release'">
+		<!--发布裁剪-->
+		<PublishTrimmed>true</PublishTrimmed>
+		<!--自包含-->
+		<SelfContained>true</SelfContained>
+		<PublishSingleFile>true</PublishSingleFile>
+		<!--Aot发布-->
+		<PublishAot>true</PublishAot>
+		<!--引入的大小与速度选项-->
+		<OptimizationPreference>Size</OptimizationPreference>
+		<!--不关心在发生异常时拥有良好的堆栈跟踪-->
+		<StackTraceSupport>true</StackTraceSupport>
+		<DebugSymbols>false</DebugSymbols>
+		<DebugType>none</DebugType>
+		<IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<AvaloniaResource Include="Assets\**" />
+		<AvaloniaXaml Remove="README\**" />
+		<Compile Remove="README\**" />
+		<EmbeddedResource Remove="README\**" />
+		<None Remove="README\**" />
+		<Folder Include="Pages\Settings\" />
+		<Folder Remove="README\" />
+		<None Remove="zanshangma.jpg" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<TrimmerRootDescriptor Include="Roots.xml" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Avalonia.Desktop" Version="11.3.9" />
+		<PackageReference
+			Condition="$(DefineConstants.Contains(ENABLE_XAML_HOT_RELOAD))"
+			Include="Avalonia.Markup.Xaml.Loader"
+			Version="11.3.9"
+		/>
+		<PackageReference Include="Avalonia.Themes.Fluent" Version="11.3.9">
+			<TreatAsUsed>true</TreatAsUsed>
+		</PackageReference>
+		<PackageReference Include="Avalonia.Fonts.Inter" Version="11.3.9" />
+		<PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.3.9" />
+		<PackageReference Include="Avalonia.ReactiveUI" Version="11.3.8" />
+		<PackageReference Include="Blurhash.ImageSharp" Version="4.0.0" />
+		<PackageReference Include="CSharpier.MsBuild" Version="1.2.1">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Condition="$(DefineConstants.Contains(ENABLE_XAML_HOT_RELOAD))" Include="HotAvalonia" Version="3.0.1" />
+		<PackageReference Include="HotAvalonia.Extensions" Version="3.0.1" PrivateAssets="All" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.1" />
+		<PackageReference Include="Nito.AsyncEx" Version="5.1.2" />
+	</ItemGroup>
+</Project>
