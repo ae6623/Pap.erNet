@@ -3,10 +3,11 @@
 
 ## 开发
 ```bash
-git clone https://github.com/HyokaChen/Pap.erNet.git
+git clone https://github.com/ae6623/Pap.erNet.git
 cd Pap.erNet/
 # 架构名称的选择性：x64 / x86 / arm64，注意：请在相关的操作系统下编译，不能跨平台编译
 ./build-win.bat 架构名称 或者 ./build-linux.sh 架构名称 或者  ./build-mac.sh 架构名称
+最好是让ai去开发，防止自己开发出错
 ```
 
 ## 文档
@@ -21,16 +22,15 @@ cd Pap.erNet/
 
 #### 我的壁纸
 
-#### 设置
+#### 设置-自动切换壁纸
+<img width="545" height="1055" alt="_20260330001751_13620_35" src="https://github.com/user-attachments/assets/3450caad-1c60-420d-a1b1-38878b67c5d1" />
 
 ## 更新日志
 > v0.0.1
 - 基础壁纸功能
 
 ## 其它
-如果觉得本项目不错，请点击页面右上角的的小星星。也可以为作者点👍，欢迎打赏。
-
-![赞赏码](README/zanshangma.jpg "赞赏码")
+切勿用于商业用途，仅作学习使用，最好是让AI去二次开发
 
 ## 感谢项目/产品
 
